@@ -35,8 +35,8 @@
         "units": "ft"
     },
     "protected": false,
-    "url": "https://your/hosted/system/repo/",
-    "manifest": "https://your/hosted/system/repo/system.json",
-    "download": "https://your/packaged/download/archive.zip"
+    "url": "https://github.com/RenardFou2/Survival-Horror-RP-VTT-System",
+    "manifest": "", 
+    "download": ""
 
 }
