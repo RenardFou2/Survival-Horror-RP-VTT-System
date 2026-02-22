@@ -1,0 +1,42 @@
+{
+    "id": "survival-horror-rp",
+    "title": "Survival Horror Roleplay Core",
+    "description": "Fan port of SHRP to Foundry for your enjoyment",
+    "version": "0.0.1",
+    "compatibility": {
+        "verified": "13.350",
+        "maximum": 13
+    },
+    "authors": {
+        "name": "Renard-Fou",
+        "discord": "renardfou"
+    },
+    "esmodules": [
+        "shrp.mjs"
+    ],
+    "styles": [
+        "styles/shrp-styles.css"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        },
+        {
+            "lang": "pl",
+            "name": "Polish",
+            "path": "lang/pl.json"
+        }
+    ],
+    "socket": false,
+    "grid": {
+        "distance": 5,
+        "units": "ft"
+    },
+    "protected": false,
+    "url": "https://your/hosted/system/repo/",
+    "manifest": "https://your/hosted/system/repo/system.json",
+    "download": "https://your/packaged/download/archive.zip"
+
+}
