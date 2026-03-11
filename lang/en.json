@@ -1,0 +1,19 @@
+{
+    "SHRP":{
+        "core":{
+            "attributes":{
+                "firearms":"Firearms",
+                "closecombat":"Close combat",
+                "strength":"Strength",
+                "agility":"Agility",
+                "healing":"Healing",
+                "awarstea":"Awareness/Stealth",
+                "survival":"Survival",
+                "comauth":"Command/Authority",
+                "persemp":"Persuation/Empathy",
+                "systems":"Systems",
+                "knowledge":"Knowledge"
+            }
+        }
+    }
+}   

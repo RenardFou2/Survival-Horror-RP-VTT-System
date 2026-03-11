@@ -1,0 +1,116 @@
+{
+    "Actor": {
+        "types": [
+            "PlayerCharacter"
+        ],
+
+        "PlayerCharacter": {
+
+            "profession":0,
+            "history":0,
+            "residence":0,
+
+            "chardetails": {
+                "name":"",
+                "age":23,
+                "height":180,
+                "weight":90,
+                "haircolor":"Brown",
+                "eyecolor":"Brown",
+                "appearance":"",
+                "features":""
+            },
+            "experience":{
+                "earnedXP": 0
+            },
+            "attributes":{
+                "firearms":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "closecombat":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "strength":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "agility":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "healing":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "awarstea":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "survival":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "persemp":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "systems":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                },
+                "knowledge":{
+                    "start": 10,
+                    "raised": 0,
+                    "bonus": 0
+                }
+            },
+            "basevalues":{
+                "health":{
+                    "value": 0
+                },
+                "speed":{
+                    "value": 20
+                },
+                "rangedDef":{
+                    "value": 10
+                },
+                "ccDef":{
+                    "value":10
+                }
+            }
+        }
+    },
+
+    "Item": {
+
+        "types": [
+            "item"
+        ],
+        
+        "templates":{
+            "generalItems": {
+                "weight": 10,
+                "value": 100,
+                "description": ""
+            }
+        },
+
+        "item":{
+            "templates": ["generalItems"],
+            "type": "item",
+            "quantity": 1
+        }
+
+    }
+}
