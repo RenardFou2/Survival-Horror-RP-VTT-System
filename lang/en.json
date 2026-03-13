@@ -1,7 +1,7 @@
 {
     "SHRP":{
-        "core":{
-            "attributes":{
+        "Core":{
+            "Attributes":{
                 "firearms":"Firearms",
                 "closecombat":"Close combat",
                 "strength":"Strength",
@@ -13,6 +13,12 @@
                 "persemp":"Persuation/Empathy",
                 "systems":"Systems",
                 "knowledge":"Knowledge"
+            }
+        },
+        "Sheets":{
+            "Labels":{
+                "HumanSheet": "Default Human Sheet",
+                "EnemySheet": "Default Enemy Sheet"
             }
         }
     }

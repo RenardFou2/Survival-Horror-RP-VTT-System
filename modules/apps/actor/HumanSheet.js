@@ -1,33 +1,33 @@
-import SHRPActorSheet from './ActorSheet.js';
+import { SHRPActorSheet } from './ActorSheet.js';
 
-export default class HumanSheet extends SHRPActorSheet {
+export class HumanSheet extends SHRPActorSheet {
     /** @inheritdoc */
     static DEFAULT_OPTIONS = {
-        classes: ["hero"],  
+        classes: ["actor"],
         position: {
-            height: 600,
+            width: 600,
+            height: 600
         },
-    };
-
-    /** @inheritdoc */
-    static PARTS = {
-        header: {
-        template: systemPath("templates/actor/header.hbs")
+        form: {
+            submitOnChange: true
         },
-        tabs: {
-        template: "templates/generic/tab-navigation.hbs"
-        },
-        properties: {
-        template: systemPath("templates/shared/properties.hbs"),
-        scrollable: [""]
-        },
-        items: {
-        template: systemPath("templates/actor/items.hbs"),
-        scrollable: [""]
-        },
-        effects: {
-        template: systemPath("templates/shared/effects.hbs"),
-        scrollable: [""]
+        window: {
+            resizable: true,
+            scrollable: true
         }
-    };
+    }
+
+    static PARTS = {
+        wholeSheetForNow: {
+            template: "./systems/survival-horror-rp/templates/actor/humanSheet/humanSheet.hbs",
+            scrollable: [""]
+        }
+    }
+
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        context.actor = this.actor;
+        context.system = this.actor.system;
+        return context;
+    }
 }

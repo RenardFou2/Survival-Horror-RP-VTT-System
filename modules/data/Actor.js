@@ -9,13 +9,11 @@ class ActorDataModel extends foundry.abstract.TypeDataModel {
     return {
       resources: new SchemaField({
         health: new SchemaField({
-          min: new NumberField({ required: true, integer: true, min: 0 }),
           value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField({ required: true, integer: true, initial: 10 })
         })
       }),
       speed: new SchemaField({
-        min: new NumberField({ required: true, integer: true, min: 0 }),
         value: new NumberField(),
         max: new NumberField()
       }),
@@ -67,6 +65,7 @@ class ActorDataModel extends foundry.abstract.TypeDataModel {
       })
     };
   }
+  
 }
 
 export class HumanDataModel extends ActorDataModel {
@@ -86,6 +85,14 @@ export class HumanDataModel extends ActorDataModel {
   }
   prepareDerivedData() {
     super.prepareDerivedData();
+    const system = this;
+    console.log("System data:", this);
+
+    this.system.resources.health.value = Math.clamp(
+      this.system.resources.health.value,
+      this.system.resources.health.min ?? 0,
+      this.system.resources.health.max
+    );
   }
 }
 
@@ -97,8 +104,5 @@ export class EnemyDataModel extends ActorDataModel {
   }
 
   static migrateData() {
-  }
-  prepareDerivedData() {
-    super.prepareDerivedData();
   }
 }
