@@ -75,10 +75,7 @@ class ActorDataModel extends foundry.abstract.TypeDataModel {
     //Calculates attribute modifiers
     for (const attr of Object.values(this.attribute)) {
       attr.mod = Math.floor((attr.value - 10) / 2);
-      console.log("System data:", attr);
     }
-
-    this.attribute.strength.mod = Math.floor((this.attribute.strength.value - 10) / 2);
   }
 }
 
@@ -97,6 +94,22 @@ export class HumanDataModel extends ActorDataModel {
 
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    const { health } = this.resources;
+    const percent = health.value / health.max;
+    if (percent >= 0.75) {
+      health.healthState = "Fine";
+    } 
+    else if (percent >= 0.5) {
+      health.healthState = "Caution (Yellow)";
+    } 
+    else if (percent >= 0.35) {
+      health.healthState = "Caution (Orange)";
+    } 
+    else {
+      health.healthState = "Danger";
+    }
+    console.log(health);
   }
 }
 

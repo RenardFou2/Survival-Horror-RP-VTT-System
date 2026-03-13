@@ -10,6 +10,10 @@
       <input type="number" name="system.resources.health.value" value="{{system.resources.health.value}}">
       <label>Max</label>
       <input type="number" name="system.resources.health.max" value="{{system.resources.health.max}}">
+      <div class="health-state">
+        <label>Status:</label>
+        <span>{{system.resources.health.healthState}}</span>
+      </div>
     </div>
 
     <h2>Speed</h2>
@@ -28,7 +32,7 @@
     <div class="attribute">
       <label>Firearms</label>
       <input type="number" name="system.attribute.firearms.value" value="{{system.attribute.firearms.value}}">
-      <span class="mod">{{document.system.attribute.strength.mod}}</span>
+      <span class="mod">{{system.attribute.firearms.mod}}</span>
     </div>
 
     <div class="attribute">
