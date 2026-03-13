@@ -80,8 +80,6 @@ export class HumanDataModel extends ActorDataModel {
     }
   }
 
-  static migrateData() {
-  }
   prepareDerivedData() {
     super.prepareDerivedData();
   }
@@ -92,8 +90,5 @@ export class EnemyDataModel extends ActorDataModel {
     return{
       ...super.defineSchema()
     }
-  }
-
-  static migrateData() {
   }
 }

@@ -16,12 +16,7 @@ export class SystemActor extends Actor {
 
   prepareDerivedData() {
     super.prepareDerivedData();
-    console.log("System data:", this);
-
-    this.system.resources.health.value = Math.clamp(
-      this.system.resources.health.value,
-      this.system.resources.health.min ?? 0,
-      this.system.resources.health.max
-    );
+    const { health } = this.resources;
+    health.value = Math.min(health.value, health.max);
   }
 }
