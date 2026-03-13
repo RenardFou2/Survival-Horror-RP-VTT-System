@@ -65,7 +65,6 @@ class ActorDataModel extends foundry.abstract.TypeDataModel {
       })
     };
   }
-  
 }
 
 export class HumanDataModel extends ActorDataModel {
@@ -85,14 +84,6 @@ export class HumanDataModel extends ActorDataModel {
   }
   prepareDerivedData() {
     super.prepareDerivedData();
-    const system = this;
-    console.log("System data:", this);
-
-    this.system.resources.health.value = Math.clamp(
-      this.system.resources.health.value,
-      this.system.resources.health.min ?? 0,
-      this.system.resources.health.max
-    );
   }
 }
 
