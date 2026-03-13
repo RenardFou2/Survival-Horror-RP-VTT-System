@@ -19,51 +19,66 @@ class ActorDataModel extends foundry.abstract.TypeDataModel {
       }),
       attribute: new SchemaField({
         firearms: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         closecombat: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         strength: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         agility: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         healing: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         awarstea: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         survival: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         comauth: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         persemp: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         systems: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
         knowledge: new SchemaField({
-          value: new NumberField(),
+          value: new NumberField({ required: true, integer: true, min: 0, initial: 10 }),
           max: new NumberField()
         }),
       })
     };
+  }
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    
+    //Clamps health so it cannot go above max
+    const { health } = this.resources;
+    health.value = Math.min(health.value, health.max);
+
+    //Calculates attribute modifiers
+    for (const attr of Object.values(this.attribute)) {
+      attr.mod = Math.floor((attr.value - 10) / 2);
+      console.log("System data:", attr);
+    }
+
+    this.attribute.strength.mod = Math.floor((this.attribute.strength.value - 10) / 2);
   }
 }
 

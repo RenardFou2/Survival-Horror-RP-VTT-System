@@ -13,10 +13,4 @@ export class SystemActor extends Actor {
       content: `${this.name} took ${damage} damage!`
     });
   }
-
-  prepareDerivedData() {
-    super.prepareDerivedData();
-    const { health } = this.resources;
-    health.value = Math.min(health.value, health.max);
-  }
 }
