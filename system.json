@@ -39,7 +39,7 @@
         "Item":{
             "weapon":{},
             "consumable":{},
-            "slotlessItem":{}
+            "item":{}
         }
     },
     "socket": false,

@@ -19,7 +19,7 @@ export class HumanSheet extends SHRPActorSheet {
 
     static PARTS = {
         wholeSheetForNow: {
-            template: "./systems/survival-horror-rp/templates/actor/humanSheet/humanSheet.hbs",
+            template: "./systems/survival-horror-rp/templates/actor/humanSheet/human-sheet.hbs",
             scrollable: [""]
         }
     }

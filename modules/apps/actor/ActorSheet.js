@@ -1,9 +1,9 @@
 const {api, sheets} = foundry.applications;
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {ActorSheet}
+ * @extends {ActorSheetV2}
  */
-export class SHRPActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheet)  {
+export class SHRPActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorSheetV2)  {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["actor"],
@@ -22,7 +22,7 @@ export class SHRPActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorS
   /** @inheritdoc */
   static PARTS = {
     wholeSheetForNow: {
-      template: "templates/actor/humanSheet.hbs",
+      template: "templates/actor/human-sheet.hbs",
     }
   }
 

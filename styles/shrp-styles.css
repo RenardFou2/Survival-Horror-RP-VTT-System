@@ -1,0 +1,46 @@
+.resident-evil.item-sheet .sheet-header {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+    border-bottom: 2px solid #333;
+}
+
+.resident-evil.item-sheet .img-container {
+    flex: 0 0 80px;
+    height: 80px;
+    border: 2px solid #444;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resident-evil.item-sheet .profile-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+    border: none;
+}
+
+.resident-evil.item-sheet .header-details {
+    flex: 1;
+}
+
+.resident-evil.item-sheet .charname input {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    color: #00ff00; /* Classic "Green Herb" green */
+    font-family: "Courier New", Courier, monospace;
+    font-size: 24px;
+    border: none;
+}
+
+.resident-evil.item-sheet .item-subtitle {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #888;
+}
