@@ -1,4 +1,6 @@
 const {api, sheets} = foundry.applications;
+import { systemPath } from "../../constants.js";
+
 /**
  * Extend the basic ItemSheetV2 with some system-specific features.
  * @extends {ItemSheet}
@@ -31,10 +33,10 @@ export class SHRPItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemShe
     };
     /** @inheritdoc */
     static PARTS = {
-        header: { template: "./systems/survival-horror-rp/templates/item/item-header.hbs"},
-        tabs: { template: "templates/generic/tab-navigation.hbs" },
-        description: { template: "./systems/survival-horror-rp/templates/item/item-description.hbs" },
-        properties: { template: "./systems/survival-horror-rp/templates/item/item-properties.hbs" }
+        header: { template: systemPath("templates/item/item-header.hbs")},
+        tabs: { template: systemPath("templates/generic/tab-navigation.hbs")},
+        description: { template: systemPath("templates/item/item-description.hbs")},
+        properties: { template: systemPath("templates/item/item-properties.hbs")}
     };
 
     async _prepareContext(options) {

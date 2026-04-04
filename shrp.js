@@ -2,7 +2,7 @@ import SHRP from "./modules/system/config.js";
 import { SystemActor } from "./modules/documents/Actor.js";
 import { SystemItem } from "./modules/documents/Item.js";
 import { HumanDataModel, EnemyDataModel } from "./modules/data/Actor.js";
-import { ItemDataModel, WeaponDataModel, ConsumableDataModel } from "./modules/data/Item.js";
+import { InventoryItemDataModel, WeaponDataModel, ConsumableDataModel } from "./modules/data/Item.js";
 import { HumanSheet } from "./modules/apps/actor/HumanSheet.js";
 import { SHRPItemSheet } from "./modules/apps/item/ItemSheet.js";
 
@@ -19,7 +19,7 @@ Hooks.once("init", () => {
     enemy: EnemyDataModel
   };
   CONFIG.Item.dataModels = {
-    key: ItemDataModel, // Key items just need the base fields, might expand later
+    key: InventoryItemDataModel,
     weapon: WeaponDataModel,
     consumable: ConsumableDataModel
   };

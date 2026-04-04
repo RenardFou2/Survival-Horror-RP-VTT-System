@@ -19,13 +19,6 @@ export class SHRPActorSheet extends api.HandlebarsApplicationMixin(sheets.ActorS
     }
   }
   
-  /** @inheritdoc */
-  static PARTS = {
-    wholeSheetForNow: {
-      template: "templates/actor/human-sheet.hbs",
-    }
-  }
-
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     context.actor = this.actor;
