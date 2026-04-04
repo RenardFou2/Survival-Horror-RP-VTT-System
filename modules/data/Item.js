@@ -45,7 +45,7 @@ export class WeaponDataModel extends InventoryItemDataModel {
   static get metadata() {
     return {
       type: "weapon",
-      detailsPartial: [systemPath("templates/item/partials/weapon-details.hbs")]
+      detailsPartial: [systemPath("templates/item/partials/weapon.hbs")]
     };
   }
 
