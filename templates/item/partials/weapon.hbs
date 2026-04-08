@@ -1,0 +1,14 @@
+<fieldset>
+  <legend>Weapon Data</legend>
+  {{!-- systemFields.damage matches the key in your defineSchema --}}
+  {{formGroup systemFields.damage value=system.damage}}
+  
+  {{formGroup systemFields.ammo.fields.max value=system.ammo.max label="Capacity"}}
+  
+  <div class="form-group">
+    <label>Ammo Type</label>
+    <select name="system.ammo.type">
+      {{selectOptions ammoTypes selected=system.ammo.type}}
+    </select>
+  </div>
+</fieldset>

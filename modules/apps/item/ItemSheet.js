@@ -9,35 +9,53 @@ export class SHRPItemSheet extends api.HandlebarsApplicationMixin(sheets.ItemShe
     static DEFAULT_OPTIONS = {
         classes: ["resident-evil", "item-sheet"],
         tag: "form",
-        window: {
-            resizable: true,
-            icon: "fas fa-biohazard"
-        },
-        form: {
-            submitOnChange: true
-        },
+        window: { resizable: true, icon: "fas fa-biohazard" },
+        form: { submitOnChange: true },
         position: { width: 450, height: "auto" },
-        actions: {
-        // Define click functions here later
-        }
     };
 
     static TABS = {
         primary: {
             tabs: [
                 { id: "description", label: "Examine", icon: "fas fa-eye" },
-                { id: "properties", label: "Properties", icon: "fas fa-cog" }
+                { id: "details", label: "Properties", icon: "fas fa-cog" }
             ],
             initial: "description"
         }
     };
+
     /** @inheritdoc */
     static PARTS = {
         header: { template: systemPath("templates/item/item-header.hbs")},
-        tabs: { template: systemPath("templates/generic/tab-navigation.hbs")},
+        tabs: { template: "templates/generic/tab-navigation.hbs"},
         description: { template: systemPath("templates/item/item-description.hbs")},
-        properties: { template: systemPath("templates/item/item-properties.hbs")}
     };
+
+    /** @inheritdoc */
+    _configureRenderParts(options) {
+        const parts = super._configureRenderParts(options);
+        const itemModel = this.item.system.constructor;
+
+        if (itemModel.metadata?.detailsPartial) {
+            parts.details = { template: systemPath("templates/item/item-details.hbs") };
+        }
+        
+        return parts;
+    }
+
+    /** @inheritdoc */
+    async _preparePartContext(partId, context) {
+        if (partId in context.tabs) context.tab = context.tabs[partId];
+
+        switch (partId) {
+            case "details":
+                context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
+                context.systemFields = this.item.system.schema.fields;
+                await this.item.system.getSheetContext(context);
+                break;
+        }
+        return context;
+    }
 
     async _prepareContext(options) {
         const context = await super._prepareContext(options);

@@ -5,6 +5,7 @@ import { HumanDataModel, EnemyDataModel } from "./modules/data/Actor.js";
 import { InventoryItemDataModel, WeaponDataModel, ConsumableDataModel } from "./modules/data/Item.js";
 import { HumanSheet } from "./modules/apps/actor/HumanSheet.js";
 import { SHRPItemSheet } from "./modules/apps/item/ItemSheet.js";
+import { systemPath } from "./modules/constants.js";
 
 Hooks.once("init", () => {
   CONFIG.SHRP = SHRP;
@@ -23,6 +24,11 @@ Hooks.once("init", () => {
     weapon: WeaponDataModel,
     consumable: ConsumableDataModel
   };
+  
+  loadTemplates([
+        systemPath("templates/item/partials/weapon.hbs"),
+        systemPath("templates/item/partials/consumable.hbs")
+    ]);
 
   foundry.documents.collections.Actors.registerSheet("shrp", HumanSheet, {
     makeDefault: true, label: "SHRP.Sheets.Labels.HumanSheet"
