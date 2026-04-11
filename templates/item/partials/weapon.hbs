@@ -1,14 +1,22 @@
 <fieldset>
-  <legend>Weapon Data</legend>
-  {{!-- systemFields.damage matches the key in your defineSchema --}}
-  {{formGroup systemFields.damage value=system.damage}}
-  
-  {{formGroup systemFields.ammo.fields.max value=system.ammo.max label="Capacity"}}
-  
-  <div class="form-group">
-    <label>Ammo Type</label>
-    <select name="system.ammo.type">
-      {{selectOptions ammoTypes selected=system.ammo.type}}
-    </select>
-  </div>
+    <legend>Damage</legend>
+    <div class="form-fields">
+      {{formGroup systemFields.damage.fields.dieNumber value=system.damage.dieNumber}}
+      {{formGroup systemFields.damage.fields.dieSize value=system.damage.dieSize choices=dieSizes}}
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Ammo & Reloading</legend>
+    {{formGroup systemFields.ammo.fields.value value=system.ammo.value}}
+    {{formGroup systemFields.ammo.fields.magSize value=system.ammo.max}}
+
+    <div class="form-group">
+        <label>{{systemFields.ammo.fields.ammoType.label}}</label>
+        <div class="form-fields">
+            <select name="system.ammo.type">
+                {{selectOptions ammoTypes selected=system.ammo.ammoType}}
+            </select>
+        </div>
+    </div>
 </fieldset>

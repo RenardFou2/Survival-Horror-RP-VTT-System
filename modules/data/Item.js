@@ -33,12 +33,14 @@ export class WeaponDataModel extends InventoryItemDataModel {
     return {
       ...baseSchema,
       ammo: new fields.SchemaField({
-        value: new fields.NumberField({initial: 15, min: 0, integer: true}),
-        max: new fields.NumberField({initial: 15, integer: true}),
-        type: new fields.StringField({initial: "9mm"})
+        value: new fields.NumberField({initial: 15, min: 0, integer: true, label: "Ammo count"}),
+        magSize: new fields.NumberField({initial: 15, integer: true, label: "Magazine size"}),
+        ammoType: new fields.StringField({initial: "9mm", label: "Ammo Type"})
       }),
-      damage: new fields.StringField({initial: "1d6"}),
-      fireRate: new fields.NumberField({initial: 1})
+      damage: new fields.SchemaField({
+        dieNumber: new fields.NumberField({initial: 1, min: 1, integer: true, label: "Dice Count"}),
+        dieSize: new fields.NumberField({initial: 6, integer: true, label: "Die Size"})
+      })
     };
   }
 
@@ -50,7 +52,20 @@ export class WeaponDataModel extends InventoryItemDataModel {
   }
 
   async getSheetContext(context) {
-    context.ammoTypes = ["9mm", "12 Gauge", ".357 Magnum"];
+    context.ammoTypes = {
+        "9mm": "9mm Parabellum",
+        "12g": "12 Gauge Shells",
+        ".357": ".357 Magnum",
+        "bolt": "Crossbow Bolts"
+    };
+    
+    context.dieSizes = {
+      4: "d4",
+      6: "d6",
+      8: "d8",
+      10: "d10",
+      12: "d12"
+    };
     return context;
   }
 }
