@@ -1,25 +1,37 @@
 {
-    "SHRP":{
-        "Core":{
-            "Attributes":{
-                "firearms":"Firearms",
-                "closecombat":"Close combat",
-                "strength":"Strength",
-                "agility":"Agility",
-                "healing":"Healing",
-                "awarstea":"Awareness/Stealth",
-                "survival":"Survival",
-                "comauth":"Command/Authority",
-                "persemp":"Persuation/Empathy",
-                "systems":"Systems",
-                "knowledge":"Knowledge"
-            }
-        },
-        "Sheets":{
-            "Labels":{
-                "HumanSheet": "Default Human Sheet",
-                "EnemySheet": "Default Enemy Sheet"
-            }
-        }
+  "SYSTEM": {
+    "Item": {
+      "Description": "Description"
+    },
+    "InventoryItem": {
+      "Width": "Width",
+      "Height": "Height",
+      "GridX": "Grid X",
+      "GridY": "Grid Y"
+    },
+    "Weapon": {
+      "AmmoCount": "Ammo count",
+      "MagSize": "Magazine size",
+      "AmmoType": "Ammo Type",
+      "DieNumber": "Dice Count",
+      "DieSize": "Die Size",
+      "AmmoTypes": {
+        "9mm": "9mm Parabellum",
+        "12g": "12 Gauge Shells",
+        "357": ".357 Magnum",
+        "Bolt": "Crossbow Bolts"
+      },
+      "DieSizes": {
+        "d4": "d4",
+        "d6": "d6",
+        "d8": "d8",
+        "d10": "d10",
+        "d12": "d12"
+      }
+    },
+    "Consumable": {
+      "HealingAmount": "Healing Amount",
+      "IsPoisonCure": "Cures Poison"
     }
-}   
+  }
+}

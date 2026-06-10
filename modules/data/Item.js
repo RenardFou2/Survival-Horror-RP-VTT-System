@@ -8,7 +8,10 @@ export class ItemDataModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     return {
-      description: new fields.HTMLField({initial: ""}),
+      description: new fields.HTMLField({
+        initial: "",
+        label: "SYSTEM.Item.Description"
+      }),
     };
   }
 }
@@ -17,10 +20,10 @@ export class InventoryItemDataModel extends ItemDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     return {
-      width: new fields.NumberField({initial: 1, min: 1, max: 2, integer: true}),
-      height: new fields.NumberField({initial: 1, min: 1, max: 2, integer: true}),
-      gridX: new fields.NumberField({initial: 0, integer: true}),
-      gridY: new fields.NumberField({initial: 0, integer: true}),
+      width: new fields.NumberField({initial: 1, min: 1, max: 2, integer: true, label: "SYSTEM.InventoryItem.Width"}),
+      height: new fields.NumberField({initial: 1, min: 1, max: 2, integer: true, label: "SYSTEM.InventoryItem.Height"}),
+      gridX: new fields.NumberField({initial: 0, integer: true, label: "SYSTEM.InventoryItem.GridX"}),
+      gridY: new fields.NumberField({initial: 0, integer: true, label: "SYSTEM.InventoryItem.GridY"}),
     };
   }
 }
@@ -33,19 +36,26 @@ export class WeaponDataModel extends InventoryItemDataModel {
     return {
       ...baseSchema,
       ammo: new fields.SchemaField({
-        value: new fields.NumberField({initial: 15, min: 0, integer: true, label: "Ammo count"}),
-        magSize: new fields.NumberField({initial: 15, integer: true, label: "Magazine size"}),
-        ammoType: new fields.StringField({initial: "9mm", label: "Ammo Type"})
+        value: new fields.NumberField({initial: 15, min: 0, integer: true, label: "SYSTEM.Weapon.AmmoCount"}),
+        magSize: new fields.NumberField({initial: 15, integer: true, label: "SYSTEM.Weapon.MagSize"}),
+        ammoType: new fields.StringField({initial: "9mm", label: "SYSTEM.Weapon.AmmoType"})
       }),
       damage: new fields.SchemaField({
-        dieNumber: new fields.NumberField({initial: 1, min: 1, integer: true, label: "Dice Count"}),
-        dieSize: new fields.NumberField({initial: 6, integer: true, label: "Die Size"})
+        dieNumber: new fields.NumberField({
+          initial: 1, 
+          min: 1, 
+          integer: true, 
+          label: game.i18n.localize("SYSTEM.Weapon.DieNumber")}),
+        dieSize: new fields.NumberField({
+          initial: 6, 
+          integer: true, 
+          label: "SYSTEM.Weapon.DieSize"})
       })
     };
   }
 
   static get metadata() {
-    return {
+    return {  
       type: "weapon",
       detailsPartial: [systemPath("templates/item/partials/weapon.hbs")]
     };
@@ -53,10 +63,10 @@ export class WeaponDataModel extends InventoryItemDataModel {
 
   async getSheetContext(context) {
     context.ammoTypes = {
-        "9mm": "9mm Parabellum",
-        "12g": "12 Gauge Shells",
-        ".357": ".357 Magnum",
-        "bolt": "Crossbow Bolts"
+        "9mm": game.i18n.localize("SYSTEM.Weapon.AmmoTypes.9mm"),
+        "12g": game.i18n.localize("SYSTEM.Weapon.AmmoTypes.12g"),
+        ".357": game.i18n.localize("SYSTEM.Weapon.AmmoTypes.357"),
+        "bolt": game.i18n.localize("SYSTEM.Weapon.AmmoTypes.Bolt")
     };
     
     context.dieSizes = {
@@ -78,9 +88,14 @@ export class ConsumableDataModel extends InventoryItemDataModel {
 
     return {
       ...baseSchema,
-      healingAmount: new fields.NumberField({initial: 25}),
-      isCurePoison: new fields.BooleanField({initial: false})
-    };
+      healingAmount: new fields.NumberField({
+        initial: 25, 
+        label: "SYSTEM.Consumable.HealingAmount"}),
+
+      isPoisonCure: new fields.BooleanField({
+        initial: false, 
+        label: "SYSTEM.Consumable.IsPoisonCure"})
+    };  
   }
 
   static get metadata() {
